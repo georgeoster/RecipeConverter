@@ -1,0 +1,48 @@
+.recipe{
+    margin-right: auto;
+    margin-left: auto;
+	width: 100%;
+	min-width: 40em;
+    max-width: 50em;
+}
+
+.title{
+    background-color: #D5D5D5;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    width:100%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    font-size: 3em;
+}
+
+.header{
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.row{
+    padding: .5em;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid black;
+    width:100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+.row:hover{
+    background-color: #EDEDED;
+}
+
+
+.cell{
+    margin-top: auto;
+    margin-bottom: auto;
+    width:30%;
+}
+.removeCell{
+     margin-top: auto;
+    margin-bottom: auto;
+    width: 10%;
+}

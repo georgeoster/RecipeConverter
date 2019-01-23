@@ -1,0 +1,38 @@
+/* controls where the errors are on the screen*/
+.errorsContainer{
+    width: 100%;
+	min-width: 40em;
+    max-width: 50em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0m;
+    height: 10%;
+    z-index: 5 !important;
+    position:relative;
+    border: 1px solid transparent;
+}
+
+.error{
+    margin-top: 1em;
+}
+
+/* controls how the errors animate/fade out */
+.fader.ng-hide {
+  opacity: 0;
+    z-index: 5 !important;
+}
+
+.fader.ng-hide-remove,
+.fader.ng-hide-add {
+  display: block !important;
+    z-index: 5 !important;
+}
+
+.fader.ng-hide-add {
+  transition: all linear 500ms;
+    z-index: 5 !important;
+}
+/* controls the red underline on fields which contain errors */
+.redBorder{
+    border-bottom: 3px solid red !important;
+}

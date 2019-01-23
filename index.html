@@ -1,0 +1,129 @@
+<html ng-app="recipeConversionApp">
+  
+  <head>
+    <link rel = "stylesheet" href = "css/bootstrap.min.css"/>
+    <link rel = "stylesheet" href = "css/recipeConverter.css"/>
+    <script src = "scripts/angular.js"></script>
+    <script src = "scripts/angular-animate.js"></script>
+    <script src = "scripts/app.js"></script>
+  </head>
+    
+  <body>
+      
+    <div class = "controllerDiv" ng-controller = "Control" data-ng-init = "init()">
+        
+      <!-- start error alerts -->
+      <div class = "errorsContainer">
+        
+        <div class = "alert alert-danger fader error" ng-show = "showQuantityError">
+          <button class = "close" type = "button" ng-click = "closeError('showQuantityError')">&times;</button>
+          Quantity must be a number. Fractions are entered as Decimals.   
+        </div>
+          
+        <div class = "alert alert-danger fader error" ng-show = "showDuplicateIngredientsError">
+          <button class = "close" type = "button" ng-click = "closeError('showDuplicateIngredientsError')">&times;</button>
+          Ingredients can not contain duplicates. And you know this, man!
+        </div>
+          
+        <div class = "alert alert-danger fader error" ng-show = "showIncompleteRecipeError">
+          <button class = "close" type = "button" ng-click = "closeError('showIncompleteRecipeError')">&times;</button>
+          All Ingredients, Quantities, and Units must be filled in prior to converting.
+        </div>
+          
+      </div>
+      <!-- end error alerts -->
+        
+      <!-- begin recipe -->
+      <div class = "recipe" id = "originalRecipe">
+        <div class = "title"> {{title}} Recipe </div>
+        <div class = "row">
+          <div class = "cell header">Ingredient</div>
+          <div class = "cell header">Quantity</div>
+          <div class = "cell header">Unit</div>
+        </div>
+        <div class = "row" ng-repeat = "item in items">
+          <div class = "cell">
+            <input class = "input ingredientInput" type = "text" placeholder = "ingredient"
+                   ng-model = "item.ingredient"
+                   ng-keyup = "loadIngredients(); eraseError($index,'ingredient','ingredientError')"
+                   ng-class = "{ 'redBorder': item.ingredientError}"
+                   ng-change = "hasDuplicateIngredients()"/>
+          </div>
+          <div class = "cell quantitytooltip">
+            <input class = "input quantityInput" type = "text" placeholder = "0"
+                   ng-model = "item.quantity"
+                   ng-keyup = "checkNAN(item); eraseError($index,'quantity','quantityError')"
+                   ng-mousedown = "clear('quantity',$index)"
+                   ng-class = "{ 'redBorder': item.quantityError}"/>
+            <span class = "quantitytooltiptext" ng-bind-html="tooltip"></span>
+          </div>
+          <div class = "cell">
+            <div class = "form-select">
+              <select ng-model = "item.unit" 
+                      ng-class = "{'redBorder': item.unitError}"
+                      ng-change = "item.unitError = false">
+                <option ng-repeat = "u in units" ng-value = "u">{{u}}</option>
+              </select>
+            </div>
+          </div>
+          <div class = "removeCell">
+            <div class = "remove" ng-click = "removeRow($index)"></div>
+          </div>
+        </div>
+        <div class = "buttonContainer">
+          <div class = "addRowButton">
+            <div class = "btn btn-outline-secondary" ng-click = "addRow()">Add Ingredient</div>
+            <div class = "btn btn-outline-secondary" ng-click = "setShowConvertWindow()">Convert Recipe</div>
+          </div>
+        </div>
+      </div>
+      <!-- end recipe -->
+        
+      <!-- begin convert to popup -->    
+      <div class = "hider" ng-hide = "!showConvertWindow"></div>
+      <div class = "convertWindowContainer" ng-hide = "!showConvertWindow">
+        <div class = "convertWindow" ng-hide = "!showConvertWindow">
+          <div class = "title">Convert Using</div>
+          <div class = "row">
+            <div class = "convertCell header">Ingredient</div>
+            <div class = "convertCell header">Quantity</div>
+            <div class = "convertCell header">Unit</div>
+          </div>
+          <div class = "row">
+            <div class = "convertCell">
+              <div class = "form-select">
+                <select ng-model = "convertTo.ingredient"
+                        ng-options = "i for i in ingredients"
+                        ng-change = "convertTo.ingredientError = false"
+                        ng-class = "{'redBorder': convertTo.ingredientError}">
+                </select>
+              </div>
+            </div>
+            <div class = "convertCell">
+              <input class = "convertQuantityInput" type = "text"  
+                     ng-model = "convertTo.quantity"
+                     ng-keyup = "check(convertTo); eraseConvertErrors('quantity','quantityError')"
+                     ng-class = "{ 'redBorder': convertTo.quantityError}"/>
+            </div>
+            <div class = "convertCell">
+              <div class = "form-select">
+                <select ng-model = "convertTo.unit" 
+                        ng-options = "u for u in units"
+                        ng-class = "{ 'redBorder': convertTo.unitError}"
+                        ng-change = "convertTo.unitError = false">
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class = "buttonContainer">
+            <div class = "addRowButton">
+              <div class = "btn btn-outline-secondary" ng-click = "setShowConvertWindow()">Cancel</div>
+              <div class = "btn btn-outline-secondary" ng-click = "convert()">Convert</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end convert to popup --> 
+    </div>
+  </body>
+</html>

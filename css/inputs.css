@@ -1,0 +1,19 @@
+.input{
+    border:0;
+    border-bottom: 2px solid #C8CCD4;
+    padding-left: .5em;
+    height: 2em;
+    width:80%;
+    margin-left: 10%;
+}
+
+.input:focus {
+    outline:0;
+}
+
+.ingredientInput{
+    text-indent: 2.2em;
+}
+.quantityInput{
+    text-indent: 2.8em;
+}

@@ -1,0 +1,49 @@
+.hider{
+    height: 100%; 
+    width: 100%; 
+    position: absolute; 
+    z-index: 2; 
+    opacity: .95; 
+    background-color: #232324;
+    top:0;
+}
+
+.convertWindowContainer{
+    height: 100%; 
+    width: 100%; 
+    position: absolute; 
+    z-index: 3;
+    top: 0;
+}
+
+.convertWindow{
+    width:80%;
+    margin-top: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    border: 1px solid black;
+    z-index: 4;
+    opacity: 1;
+}
+
+.convertQuantityInput{
+    border:0;
+    border-bottom: 2px solid #C8CCD4;
+    padding-left: .5em;
+    height: 2em;
+    width:100%;
+    text-indent: 5.5em;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.convertQuantityInput:focus {
+    outline:0;
+}
+
+.convertCell{
+    margin-top: auto;
+    margin-bottom: auto;
+    width:33%;
+}

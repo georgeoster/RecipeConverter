@@ -1,0 +1,49 @@
+/* controls the conversion table in the tooltip */
+.toolTipTable{
+    margin-left: auto; 
+    margin-right: auto; 
+    color:white;
+    font-size: .75em;
+}
+
+.toolTipTable tr{
+    border-bottom: 1px solid white;
+}
+
+.toolTipTable td{
+    padding: .75em;
+    white-space: nowrap;
+}
+
+.quantitytooltip {
+    position: relative;
+    display: inline-block;
+}
+/* controls the placement and appearance of the tooltip */  
+.quantitytooltip .quantitytooltiptext {
+    visibility: hidden;
+    background-color: #404247;
+    color: #fff;
+    text-align: center;
+    border-radius: 1em;
+    padding-top: .75em;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 100%;
+}
+
+.quantitytooltip .quantitytooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 10%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+}
+.quantitytooltip:hover .quantitytooltiptext {
+    visibility: visible;
+}
+

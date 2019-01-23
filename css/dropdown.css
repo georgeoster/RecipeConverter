@@ -1,0 +1,32 @@
+.form-select {
+    width: 150px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.form-select select:focus {
+    outline:0;
+}
+
+.form-select select {
+    height: 2em;
+    width: 10em;
+    text-indent: 1em;
+    margin: .5em 0;
+    border: 0;
+    border: 1px solid black;
+    
+    background: #fff;
+    background-image: url('../img/downArrow.png');
+    background-repeat: no-repeat;
+
+    background-size: 1.25em;
+    background-position:  right .05em center;
+    font-family: 'Arial';
+    padding-left: .5em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
